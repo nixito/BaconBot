@@ -1,0 +1,3 @@
+
+$bot.loggers.level = :info
+
