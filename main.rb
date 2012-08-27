@@ -16,19 +16,19 @@ end
 $bot = Cinch::Bot.new do
   configure do |c|
     nick = "BaconBot"
-    server = "irc.freenode.org"
+    server = "chat.freenode.net"
     channel = "#bottest"
 
     if(File.exists?("cfg/nick"))
-      nick = IO.read("cfg/nick")
+      nick = IO.read("cfg/nick").strip
     end
 
     if(File.exists?("cfg/server"))
-      server = IO.read("cfg/server")
+      server = IO.read("cfg/server").strip
     end
 
     if(File.exists?("cfg/channel"))
-      channel = IO.read("cfg/channel")
+      channel = IO.read("cfg/channel").strip
     end
 
     c.nick = nick
@@ -39,15 +39,15 @@ $bot = Cinch::Bot.new do
   end
 
   on :connect do |m|
-    if(File.exists("cfg/identify"))
-      pass = IO.read("cfg/identify")
+    if(File.exists?("cfg/identify"))
+      pass = IO.read("cfg/identify").strip
       User("nickserv").msg("identify #{pass}")
     end
   end
   
   on :message, "!reload" do |m|
-    if(File.exists("cfg/admin"))
-      admin = IO.read("cfg/admin")
+    if(File.exists?("cfg/admin"))
+      admin = IO.read("cfg/admin").strip
       load_plugins if m.user.nick.upcase == admin.upcase
     end
   end
