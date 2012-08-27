@@ -19,15 +19,15 @@ $bot = Cinch::Bot.new do
     server = "irc.freenode.org"
     channel = "#bottest"
 
-    if(File.exists("cfg/nick"))
+    if(File.exists?("cfg/nick"))
       nick = IO.read("cfg/nick")
     end
 
-    if(File.exists("cfg/server"))
+    if(File.exists?("cfg/server"))
       server = IO.read("cfg/server")
     end
 
-    if(File.exists("cfg/channel"))
+    if(File.exists?("cfg/channel"))
       channel = IO.read("cfg/channel")
     end
 
