@@ -71,7 +71,7 @@ class Links
             save_links
           end
         else
-          throw e
+          #throw e
         end
       end
     end
