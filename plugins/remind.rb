@@ -47,6 +47,7 @@ class Remind
 
   match /remind\s+([-\w]+)\s+(\w+)\s+([^\s].*)/
   def execute m, to, times, reminder
+    to.downcase!
     at = Time.now
 
     times.scan(/\d+[a-zA-Z]/).each do |part|
