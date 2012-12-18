@@ -32,9 +32,9 @@ class SG
       #"q3alive" => ["188.120.238.182", 27960]
     }
 
-    @t=Thread.new do
-      watch_sg
-    end
+    #@t||=Thread.new do
+      #watch_sg
+    #end
   end
 
   def unregister

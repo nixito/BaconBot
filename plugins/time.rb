@@ -1,8 +1,6 @@
 
 require 'cinch'
-require 'nokogiri'
-require 'open-uri'
-require 'uri'
+require 'weather-underground'
 
 class Timea
   include Cinch::Plugin
@@ -18,10 +16,9 @@ class Timea
 
   match /time\s+(.+)/, method: :get_time
   def get_time m, loc
-    loc.gsub!(" ", "+")
-    url = "http://www.google.com/search?q=time+#{loc}"
-    doc = Nokogiri::HTML(open(url))
-    m.reply doc.css('.obcontainer')[0].text
+    w = WeatherUnderground::Base.new
+    obv = w.CurrentObservations(loc)
+    m.reply obv.display_location[0].full + ": " + obv.local_time
   end
 end
 
