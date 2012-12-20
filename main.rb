@@ -13,6 +13,14 @@ def load_plugins
   Dir["plugins/*.rb"].each{ |f| load f }
 end
 
+def on_timer_15s
+  $bot.plugins.each do |p|
+    if(p.respond_to? :timer_15s)
+      p.timer_15s
+    end
+  end
+end
+
 $bot = Cinch::Bot.new do
   configure do |c|
     nick = "BaconBot"
@@ -51,6 +59,10 @@ $bot = Cinch::Bot.new do
       load_plugins if m.user.nick.upcase == admin.upcase
     end
   end
+end
+
+Cinch::Timer.new($bot, {:interval => 15}) do
+  on_timer_15s
 end
 
 load_plugins
