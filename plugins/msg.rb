@@ -24,6 +24,17 @@ class Msg
     "msg"
   end
 
+  listen_to :join, method: :on_join
+  def on_join m
+    synchronize(:msg) do
+      msgname = m.user.nick.downcase
+
+      if($msgs[msgname] && $msgs[msgname].length > 0)
+        m.reply "#{m.user.nick}, you have messages waiting"
+      end
+    end
+  end
+
   listen_to :message, method: :on_message
   def on_message m
     synchronize(:msg) do
