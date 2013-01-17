@@ -21,7 +21,7 @@ def save_fact
 end
 
 $fact = load_fact
-$fact ||= [cur_date, get_fact]
+$fact ||= [cur_date, ""]
 save_fact
 
 class Wiki
@@ -33,7 +33,7 @@ class Wiki
 
   match "fact", method: :fact
   def fact m
-    if(cur_date != $fact[0])
+    if(cur_date != $fact[0] || $fact[1].empty?)
       $fact[0] = cur_date
       $fact[1] = get_fact
       save_fact

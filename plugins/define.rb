@@ -17,7 +17,7 @@ class Define
     ["def(ine)", "ex(ample)", "word"]
   end
   
-  match /(?:(?:dict(?:ionary)?)|(?:def(?:ine)?)) ([^\s]+)(?:\s+(\d+))?/, method: :define
+  match /(?:(?:dict(?:ionary)?)|(?:def(?:ine)?)) ([^\d]*[^\s\d])(?:\s+(\d+))?/, method: :define
   def define(m, query, page = 1)
     page = page.to_i
     dfns = Wordnik.word.get_definitions(query)
