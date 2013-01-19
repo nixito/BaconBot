@@ -20,7 +20,13 @@ class Wolfram
 
     txt = doc.css('#Result plaintext').inner_html
 
+    dec = doc.css('#DecimalApproximation plaintext').inner_html
+
     txt = "go die in a fire" if !txt || txt == ""
+
+    if(dec && dec != "")
+      txt += " (#{dec})"
+    end
 
     m.reply m.user.nick + ", " + txt
   end
