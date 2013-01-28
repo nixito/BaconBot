@@ -73,7 +73,7 @@ class Remind
         :at => at
       })
       save_reminds
-      m.reply "#{m.user.nick}, remind remembered"
+      m.reply "#{m.user.nick}, #{to} will be remindered"
     end
   end
 end
