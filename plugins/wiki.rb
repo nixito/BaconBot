@@ -58,6 +58,10 @@ class Wiki
     text = doc.css('div#bodyContent p')[0].text
     text.gsub!(/\[\d+\]/, "")
 
+    if(name == "Special:Random" && text.end_with?("may refer to:"))
+      return get_fact
+    end
+
     unless text.index(title)
       text = "#{title.strip}: #{text}"
     end
