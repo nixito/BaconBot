@@ -45,7 +45,7 @@ class Remind
     end
   end
 
-  match /remind\s+([-\w]+)\s+(\w+)\s+([^\s].*)/
+  match /remind\s+([^\s]+)\s+(\w+)\s+([^\s].*)/
   def execute m, to, times, reminder
     to.downcase!
     at = Time.now

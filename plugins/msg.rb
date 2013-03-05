@@ -50,7 +50,7 @@ class Msg
     end
   end
 
-  match /msg\s+([-\w]+)\s+([^\s].*)/, method: :msg
+  match /msg\s+([^\s]+)\s+([^\s].*)/, method: :msg
   def msg m, to, text
     synchronize(:msg) do
       to.downcase!
