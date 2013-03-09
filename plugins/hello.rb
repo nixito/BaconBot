@@ -1,4 +1,3 @@
-
 require 'cinch'
 
 class Hello
@@ -7,7 +6,10 @@ class Hello
   match "hello"
 
   def execute(m)
-    m.reply "Go die in a fire, #{m.user.nick}"
+    if m.user.nick == "Nixito"
+    m.reply "Hello, #{m.user.nick}"
+    else m.reply "Go die in a fire, #{m.user.nick}"
+    end
   end
 end
 
